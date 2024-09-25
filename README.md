@@ -27,15 +27,15 @@ The `patent_novelty_check()` function brings it all together, helping us check t
 
 ## Explanation:
 
-**Function analyze_patent_claims_for_suggestions:** 
+**Function `analyze_patent_claims_for_suggestions()`:** 
 This function takes the extracted patent claims and uses GPT-4 to suggest ways to broaden or narrow the claims.
 It prompts GPT-4 to act as a patent expert and provides suggestions for improving the claims.
 
-**Function upload_and_analyze_patent_claims:**
+**Function `upload_and_analyze_patent_claims()`:**
 This function simulates reading a patent document (in this case, a .txt file with the claims), and it passes the claims to GPT-4 for analysis.
 The uploaded file should contain claims in plain text for GPT-4 to analyze.
 
-**Pipeline patent_claim_suggestion_pipeline:**
+**Pipeline `patent_claim_suggestion_pipeline()`:**
 This pipeline coordinates the process by uploading the claims, analyzing them, and returning suggestions.
 
 ### Steps:
