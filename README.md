@@ -148,3 +148,118 @@ After you run the code:
 - It also helps you figure out how much your invention might be worth based on what’s happening in the world right now.
 
 
+
+# Patent drafting code
+
+### **What Does This Code Do?**
+- You tell the helper about an **invention** (using something called a **technical description**).
+- The helper then writes a **patent draft** for you, including:
+  - A short summary called the **abstract**.
+  - A longer explanation of how the invention works called the **detailed description**.
+  - A set of **claims**, which are legal statements that say what parts of the invention are protected.
+
+It uses **GPT-4** (a super-smart language model) to do this. The code also measures how long each step takes.
+
+---
+
+### **Functions in the Code**:
+
+#### 1. **Timer Decorator (`timer_decorator`)**
+   ```python
+   def timer_decorator(func):
+       def wrapper(*args, **kwargs):
+           start_time = time.time()
+           result = func(*args, **kwargs)
+           end_time = time.time()
+           print(f"Function '{func.__name__}' took {end_time - start_time:.4f} seconds")
+           return result
+       return wrapper
+   ```
+   **What It Does**:
+   - This is like a **stopwatch** that measures how long a function takes to finish.
+   - Every time we use a function (like asking the helper to write the abstract), it starts the stopwatch at the beginning and stops it at the end.
+   - It then prints how many seconds it took for the function to finish.
+
+#### 2. **Generate Abstract (`generate_patent_abstract`)**
+   ```python
+   def generate_patent_abstract(technical_description):
+       ...
+   ```
+   **What It Does**:
+   - This function asks **GPT-4** to read the invention's **technical description** and create a short **abstract**.
+   - The **abstract** is a short summary that explains what the invention is and what it does, kind of like a movie trailer that tells you what the invention is about.
+   - **Input**: A description of the invention (what it does and how it works).
+   - **Output**: A short, simple summary of the invention (the abstract).
+
+#### 3. **Generate Detailed Description (`generate_detailed_description`)**
+   ```python
+   def generate_detailed_description(technical_description):
+       ...
+   ```
+   **What It Does**:
+   - This function uses GPT-4 to write a longer explanation called the **detailed description**. This part explains **how** the invention works and all the parts involved.
+   - Imagine you're building a robot, and this function writes the step-by-step instructions for how the robot works and what materials it uses.
+   - **Input**: The technical description of the invention.
+   - **Output**: A long and detailed explanation of the invention.
+
+#### 4. **Generate Patent Claims (`generate_patent_claims`)**
+   ```python
+   def generate_patent_claims(technical_description):
+       ...
+   ```
+   **What It Does**:
+   - This is a very important function because it writes the **claims**. The **claims** tell you what part of the invention is protected by law.
+   - Think of **claims** as the rules that say, “This part of my invention is mine, and no one else can copy it.”
+   - **Input**: The technical description of the invention.
+   - **Output**: A list of claims, which are legal statements that define what parts of the invention are protected.
+
+#### 5. **Full Patent Draft Pipeline (`patent_draft_pipeline`)**
+   ```python
+   def patent_draft_pipeline(technical_description):
+       ...
+   ```
+   **What It Does**:
+   - This is the **boss function** that puts everything together. It tells all the other functions what to do.
+   - **Steps**:
+     1. It first asks the helper to write the **abstract**.
+     2. Then it asks for the **detailed description**.
+     3. Finally, it asks for the **claims**.
+   - It combines all these parts into a full **patent draft**, which is like a finished document with all the sections.
+   - **Input**: The technical description of the invention.
+   - **Output**: A full patent draft, including the abstract, detailed description, and claims.
+
+---
+
+### **How Does It Work?**
+
+1. **You describe the invention**: You tell the code how the invention works using a technical description. For example, if you invent a robot that cleans rooms, you explain how the robot works.
+   
+2. **The code generates a patent draft**: The code will then ask GPT-4 to help write three things:
+   - **Abstract**: A short summary of the invention.
+   - **Detailed Description**: A long, detailed explanation of how the invention works.
+   - **Claims**: The important parts of the invention that are protected.
+
+3. **Combining everything into one document**: The final result is a complete patent draft with all the sections written for you.
+
+---
+
+### **Example**:
+
+Let’s say your invention is a robot that can clean rooms using sensors and AI. Here’s how the code works:
+
+1. **Input**: 
+   - You give the code a description of how the robot works (this is the technical description).
+   
+2. **Output**:
+   - **Abstract**: The code writes a short summary that says, “This robot uses sensors and AI to clean rooms efficiently.”
+   - **Detailed Description**: The code writes a long explanation, detailing how the robot moves, senses dirt, and cleans different surfaces.
+   - **Claims**: The code lists the parts of the robot (like the AI system, the sensor technology, and the way it moves) that you want to protect so no one else can copy them.
+
+---
+
+### **Why is This Useful?**
+
+- **Patents** are important because they protect your inventions from being copied.
+- Writing a patent is difficult and requires many different parts like the abstract, description, and claims.
+- This code **automates** the process of writing the patent using GPT-4, which is like a very smart writing assistant.
+  
